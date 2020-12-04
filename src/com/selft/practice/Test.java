@@ -1,0 +1,13 @@
+package com.selft.practice;
+
+import com.wz.array.PrintArray;
+
+public class Test {
+    public static void main(String[] args) {
+        System.out.println(3^3);
+
+
+        int[] arr = {2,4,53,3};
+        PrintArray.printByJDK(arr);
+    }
+}
