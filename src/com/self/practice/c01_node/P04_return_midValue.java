@@ -3,7 +3,7 @@ package com.self.practice.c01_node;
 import com.self.practice.comm_tools.Node;
 import com.self.practice.comm_tools.enums.NodeMidTypeEnum;
 
-public class P004_return_midValue {
+public class P04_return_midValue {
 
     public static void main(String[] args) {
         Node head = Node.createOnlyNextNode(10,100);
