@@ -1,6 +1,6 @@
-package com.selft.practice.c01_node;
+package com.self.practice.c01_node;
 
-import com.selft.practice.comm_tools.Node;
+import com.self.practice.comm_tools.Node;
 
 public class P01_reverse_single_linked_list {
 

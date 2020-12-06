@@ -1,7 +1,6 @@
-package com.selft.practice.c01_node;
+package com.self.practice.c01_node;
 
-import com.selft.practice.comm_tools.DoubleNode;
-import com.selft.practice.comm_tools.Node;
+import com.self.practice.comm_tools.DoubleNode;
 
 public class P02_reverse_double_linked_list {
 

@@ -1,4 +1,4 @@
-package com.selft.practice.comm_tools;
+package com.self.practice.comm_tools;
 
 import java.util.Random;
 
