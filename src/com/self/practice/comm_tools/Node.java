@@ -15,7 +15,7 @@ public class Node {
     }
 
     //随机值
-    private static Random random = new Random();
+    public static Random random = new Random();
 
     /**
      * 根据链表容量和其中最大值，创建只有next的单链表
