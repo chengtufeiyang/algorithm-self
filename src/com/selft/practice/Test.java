@@ -1,5 +1,6 @@
 package com.selft.practice;
 
+import com.selft.practice.comm_tools.Node;
 import com.wz.array.PrintArray;
 
 public class Test {
@@ -9,5 +10,8 @@ public class Test {
 
         int[] arr = {2,4,53,3};
         PrintArray.printByJDK(arr);
+
+        //create node  print node
+        Node.printNode(Node.createOnlyNextNode(10,100));
     }
 }
