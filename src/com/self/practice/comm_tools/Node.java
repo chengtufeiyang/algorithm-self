@@ -9,6 +9,10 @@ public class Node {
     public int value;
 
     public Node next;
+    /**
+     * 随机指针
+     */
+    public Node randomNode;
 
     public Node(int value) {
         this.value = value;
