@@ -19,8 +19,15 @@ public class Node {
     //随机值
     public static Random random = new Random();
 
+    //记录尾部节点
+    public static Node end;
+
+    //记录所有节点
+    public static List<Node> allNode = new ArrayList<>();
+
     /**
      * 根据链表容量和其中最大值，创建只有next的单链表
+     * 并保存end节点
      * @param capacity
      * @param maximum
      * @return
@@ -31,8 +38,10 @@ public class Node {
         Node temp = preHead;
         for (int i = 0; i < capacity; i++) {
             temp.next = new Node(random.nextInt(maximum+1));
+            allNode.add(temp.next);
             temp = temp.next;
         }
+        end = temp;//存储尾节点
         return preHead.next;
     }
 
@@ -89,6 +98,21 @@ public class Node {
         return head;
     }
 
+    /**
+     * 生成环行节点
+     * @param capacity
+     * @param maximum
+     * @return
+     */
+    public static Node createLoopNode(int capacity,int maximum){
+
+        Node head = createOnlyNextNode(capacity,maximum);
+        //生成随机数，连接该随机数对应节点与尾节点
+        int index = random.nextInt(allNode.size());
+        end.next = allNode.get(index);
+        return head;
+    }
+
 
     /**
      * 打印链表数据
@@ -121,6 +145,28 @@ public class Node {
         }
         System.out.println(sb.toString().substring(0,sb.toString().length()-2));
         System.out.println(sb_random.toString());
+    }
+
+    /**
+     * 打印循环链表
+     * @param head
+     */
+    public static void printLoopNode(Node head){
+        if (head==null) return;
+        Set<Node> set = new HashSet<>();
+        Node temp = head;
+        StringBuilder sb = new StringBuilder();
+        while (temp != null){
+            if (!set.contains(temp)){
+                set.add(temp);
+                sb.append(temp.value).append("->");
+                temp = temp.next;
+            }else {
+                System.out.println("入口节点："+temp.value);
+                break;
+            }
+        }
+        System.out.println(sb.toString().substring(0,sb.toString().length()-2));
     }
 
 }
