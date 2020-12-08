@@ -161,25 +161,21 @@ public class P09_banana_node {
          */
         public static Node noLoopBananaNode(Node headOne, Node endNodeOne, Node headTwo, Node endNodeTwo) {
 
-            Node endOne = null;
-            Node endTwo = null;
             Node temp_one = headOne;
             int count = 0;
             while (temp_one != endNodeOne) {//循环第一个
                 count++;
-                endOne = temp_one;
                 temp_one = temp_one.next;
             }
 
             Node temp_two = headTwo;
             while (temp_two != endNodeTwo) {
                 count--;
-                endTwo = temp_two;
                 temp_two = temp_two.next;
             }
 
             //首先判断是否存在交点
-            if (endOne != endTwo) {
+            if (temp_one != temp_two) {
                 return null;
             }
 
@@ -189,17 +185,16 @@ public class P09_banana_node {
 
             count = Math.abs(count);
             while (count != 0) {
+                count--;
                 longNode = longNode.next;
             }
 
-            while (longNode != null && shortNode != null) {
-                if (longNode == shortNode) {
-                    return longNode;
-                }
+            // 到这一步了一定有一个相交点
+            while (longNode !=shortNode ) {
                 longNode = longNode.next;
                 shortNode = shortNode.next;
             }
-            return null;
+            return longNode;
         }
     }
 
