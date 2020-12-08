@@ -63,7 +63,7 @@ public class P08_loop_node_entry_point {
 
 
     /**
-     * 判断链表是否存在环形结构---非容器法
+     * 判断链表是否存在环形结构---容器法
      * @param head
      * @return
      */
@@ -84,7 +84,7 @@ public class P08_loop_node_entry_point {
     }
 
     /**
-     * 存在环形情况：返回入口节点----非容器法
+     * 存在环形情况：返回入口节点----容器法
      * 无环形情况：返回null
      * @param head
      * @return
