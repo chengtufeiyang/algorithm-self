@@ -8,6 +8,57 @@ import java.util.Set;
 public class P09_banana_node {
 
     public static void main(String[] args) {
+// 1->2->3->4->5->6->7->null
+        Node head1 = new Node(1);
+        head1.next = new Node(2);
+        head1.next.next = new Node(3);
+        head1.next.next.next = new Node(4);
+        head1.next.next.next.next = new Node(5);
+        head1.next.next.next.next.next = new Node(6);
+        head1.next.next.next.next.next.next = new Node(7);
+
+        // 0->9->8->6->7->null
+        Node head2 = new Node(0);
+        head2.next = new Node(9);
+        head2.next.next = new Node(8);
+        head2.next.next.next = head1.next.next.next.next.next; // 8->6
+//        System.out.println("container----"+bananaNodeByContainer(head1, head2).value);
+//        System.out.println("self----"+bananaNodeBySelf(head1, head2).value);
+
+        // 1->2->3->4->5->6->7->4...
+        head1 = new Node(1);
+        head1.next = new Node(2);
+        head1.next.next = new Node(3);
+        head1.next.next.next = new Node(4);
+        head1.next.next.next.next = new Node(5);
+        head1.next.next.next.next.next = new Node(6);
+        head1.next.next.next.next.next.next = new Node(7);
+        head1.next.next.next.next.next.next = head1.next.next.next; // 7->4
+
+        // 0->9->8->2...
+        head2 = new Node(0);
+        head2.next = new Node(9);
+        head2.next.next = new Node(8);
+        head2.next.next.next = head1.next; // 8->2
+//        System.out.println("container----"+bananaNodeByContainer(head1, head2).value);
+//        System.out.println("self----"+bananaNodeBySelf(head1, head2).value);
+
+//        Node.printLoopNode(head1);
+//        System.out.println(P08_loop_node_entry_point.loopNodeEntryPointNodeByContainer(head1).value);
+//        Node.printLoopNode(head2);
+//        System.out.println(P08_loop_node_entry_point.loopNodeEntryPointNodeByContainer(head2).value);
+
+        // 0->9->8->6->4->5->6..
+        head2 = new Node(0);
+        head2.next = new Node(9);
+        head2.next.next = new Node(8);
+        head2.next.next.next = head1.next.next.next.next.next; // 8->6
+        System.out.print("head1------");
+        Node.printLoopNode(head1);
+        System.out.print("head2------");
+        Node.printLoopNode(head2);
+        System.out.println("container----"+bananaNodeByContainer(head1, head2).value);
+        System.out.println("self----"+bananaNodeBySelf(head1, head2).value);
 
     }
 
@@ -41,7 +92,7 @@ public class P09_banana_node {
      * @param headTwo
      * @return
      */
-    public static Node bananaNode(Node headOne, Node headTwo) {
+    public static Node bananaNodeByContainer(Node headOne, Node headTwo) {
 
         //  both  no loop
         if (!P08_loop_node_entry_point.loopNode(headOne) && !P08_loop_node_entry_point.loopNode(headTwo)) {
@@ -49,7 +100,31 @@ public class P09_banana_node {
         }
         // both loop
         if (P08_loop_node_entry_point.loopNode(headOne) && P08_loop_node_entry_point.loopNode(headTwo)) {
-            return LoopNodeBananaByContainer.loopBananaNodeByContainere(headOne, headTwo);
+            return LoopNodeBananaByContainer.loopBananaNodeByContainere(headOne,
+                    P08_loop_node_entry_point.loopNodeEntryPointNodeByContainer(headOne), headTwo,
+                    P08_loop_node_entry_point.loopNodeEntryPointNodeByContainer(headTwo));
+        }
+        return null;
+    }
+
+
+    /**
+     * 返回两个链表相交节点---容器法
+     *
+     * @param headOne
+     * @param headTwo
+     * @return
+     */
+    public static Node bananaNodeBySelf(Node headOne, Node headTwo) {
+
+        //  both  no loop
+        if (!P08_loop_node_entry_point.loopNode(headOne) && !P08_loop_node_entry_point.loopNode(headTwo)) {
+            return NoLoopNodeBananaBySelf.noLoopBananaNode(headOne, null, headTwo, null);
+        }
+        // both loop
+        if (P08_loop_node_entry_point.loopNode(headOne) && P08_loop_node_entry_point.loopNode(headTwo)) {
+            return LoopNodeBananaBySelf.loopBananaNode(headOne,P08_loop_node_entry_point.loopNodeEntryPointNode(headOne),
+                    headTwo,P08_loop_node_entry_point.loopNodeEntryPointNode(headTwo));
         }
         return null;
     }
@@ -252,35 +327,27 @@ public class P09_banana_node {
          * @param headTwo
          * @return
          */
-        public static Node loopBananaNodeByContainere(Node headOne, Node headTwo) {
+        public static Node loopBananaNodeByContainere(Node headOne, Node endNodeOne, Node headTwo, Node endNodeTwo) {
 
             if (headOne == null && headTwo == null) return null;
             if (headOne == null && headTwo != null) return null;
             if (headOne != null && headTwo == null) return null;
 
-            Set<Node> setOne = new HashSet<>();
-            Node tempOne = headOne;
-            while (tempOne != null) {
-                if(!setOne.contains(tempOne)){
-                    setOne.add(tempOne);
-                }else {
-                    break;
+            if (endNodeOne==endNodeTwo){//有环链表入口点相等
+                return NoLoopNodeBananaByContainer.noLoopBananaNodeByContainere(headOne,endNodeOne,headTwo,endNodeTwo);
+            }else{
+                Set<Node> setOne = new HashSet<>();
+                while (!setOne.contains(endNodeOne)){
+                    setOne.add(endNodeOne);
+                    endNodeOne = endNodeOne.next;
                 }
-                tempOne = tempOne.next;
-            }
-
-            Node tempTwo = headTwo;
-            Set<Node> setTwo = new HashSet<>();//节存储容器
-            while (tempTwo != null) {
-                if (setOne.contains(tempTwo)) {
-                    return tempTwo;
+                Node tempTwo = endNodeTwo.next;
+                while (endNodeTwo != tempTwo){
+                    if (setOne.contains(tempTwo)){
+                        return endNodeTwo;
+                    }
+                    tempTwo = tempTwo.next;
                 }
-                if (!setTwo.contains(tempTwo)){
-                    setTwo.add(tempTwo);
-                }else {
-                    break;
-                }
-                tempTwo = tempTwo.next;
             }
             return null;
         }
