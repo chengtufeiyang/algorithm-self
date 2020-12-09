@@ -11,9 +11,11 @@ public class P08_loop_node_entry_point {
         Node head = Node.createLoopNode(5,20);
         Node.printLoopNode(head);
         System.out.println(loopNode(head));
-        Node head_sj = Node.createOnlyNextNode(5,20);
-        Node.printNode(head_sj);
-        System.out.println(loopNode(head_sj));
+        System.out.println(loopNodeEntryPointNodeByContainer(head).value);
+        System.out.println(loopNodeEntryPointNode(head).value);
+//        Node head_sj = Node.createOnlyNextNode(5,20);
+//        Node.printNode(head_sj);
+//        System.out.println(loopNode(head_sj));
 
 
     }
@@ -51,12 +53,19 @@ public class P08_loop_node_entry_point {
         Node fast = head.next;
         while (fast != null && fast.next != null){
             if (slow == fast){
-                return slow;
+                break;
             }
             slow = slow.next;
             fast = fast.next.next;
         }
-        return null;
+        if (fast==null || fast.next == null) return null;//说明无环
+        fast = head;
+        slow = slow.next;
+        while (fast != slow){
+            fast = fast.next;
+            slow = slow.next;
+        }
+        return fast;
     }
 
 
