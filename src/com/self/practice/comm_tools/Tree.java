@@ -5,7 +5,7 @@ import java.util.Deque;
 
 public class Tree {
 
-    private int value;
+    public int value;
 
     /**
      * 左子树
