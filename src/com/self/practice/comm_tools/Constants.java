@@ -5,5 +5,5 @@ public class Constants {
     /**
      * 空格字符串
      */
-    private static final String SPACE =" ";
+    public static final String SPACE =" ";
 }
