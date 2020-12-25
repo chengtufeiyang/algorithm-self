@@ -209,6 +209,7 @@ public class P01_order_tree {
 
         /**
          * 后序遍历---非递归
+         * 使用一个栈实现，迭代版本的后序遍历
          * 左-右-中
          *
          * @param tree
