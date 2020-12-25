@@ -119,6 +119,10 @@ public class Node {
      * @param head
      */
     public static void printNode(Node head){
+        if (null == head) {
+            System.out.println("null");
+            return;
+        }
         StringBuilder sb = new StringBuilder();
         while (head != null){
             sb.append(head.value).append("->");
