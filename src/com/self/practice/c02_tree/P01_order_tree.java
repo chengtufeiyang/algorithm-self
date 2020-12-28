@@ -2,6 +2,7 @@ package com.self.practice.c02_tree;
 
 import com.self.practice.comm_tools.Constants;
 import com.self.practice.comm_tools.Tree;
+import com.self.practice.comm_tools.enums.OrderTreeEnum;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -43,13 +44,13 @@ public class P01_order_tree {
     public static void order(Tree tree, boolean flag, int type) {
 
         if (flag) {//判断是否为递归遍历方式
-            if (type == 0) recusionOrder.preOrder(tree);
-            if (type == 1) recusionOrder.midOrder(tree);
-            if (type == 2) recusionOrder.postOrder(tree);
+            if (type == OrderTreeEnum.PRE.getValue()) recusionOrder.preOrder(tree);
+            if (type == OrderTreeEnum.MID.getValue()) recusionOrder.midOrder(tree);
+            if (type == OrderTreeEnum.POST.getValue()) recusionOrder.postOrder(tree);
         } else {
-            if (type == 0) noRecusionOrder.preOrder(tree);
-            if (type == 1) noRecusionOrder.midOrder2(tree);
-            if (type == 2) noRecusionOrder.postOrder2(tree);
+            if (type == OrderTreeEnum.PRE.getValue()) noRecusionOrder.preOrder(tree);
+            if (type == OrderTreeEnum.MID.getValue()) noRecusionOrder.midOrder2(tree);
+            if (type == OrderTreeEnum.POST.getValue()) noRecusionOrder.postOrder2(tree);
         }
     }
 
