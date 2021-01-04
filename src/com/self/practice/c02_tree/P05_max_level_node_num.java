@@ -35,7 +35,6 @@ public class P05_max_level_node_num {
                 stack.addLast(temp.left);
             }
 
-
             if (temp != last){
                 curr++;
             }else {
@@ -47,5 +46,15 @@ public class P05_max_level_node_num {
             }
         }
         return result;
+    }
+
+    /**
+     * 非容器法
+     * @param tree
+     * @return
+     */
+    public static int nodeNumByNoContainer(Tree tree){
+
+        return 0;
     }
 }
