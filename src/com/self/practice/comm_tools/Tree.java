@@ -53,14 +53,14 @@ public class Tree {
 
 
     /**
-     * 递归前序遍历打印
+     * 递归中序遍历打印
      */
     public static void prePrint(Tree tree){
         if (null == tree ) {
             return;
         }
         prePrint(tree.left);
-        System.out.println(tree.value);
+        System.out.print(tree.value+Constants.RIGHT_ARROW);
         prePrint(tree.right);
     }
 
