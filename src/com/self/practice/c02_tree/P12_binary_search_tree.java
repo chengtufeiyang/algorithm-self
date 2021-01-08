@@ -47,8 +47,10 @@ public class P12_binary_search_tree {
         Info rightInfo = process(tree.right);
         max = Math.max(max,Math.max(leftInfo.max,rightInfo.max));
         min = Math.min(min,Math.min(leftInfo.min,rightInfo.min));
-
         boolean flag = leftInfo.max < tree.value && rightInfo.min > tree.value ? true:false;
+        if (flag || !leftInfo.flag || !rightInfo.flag){
+            flag = false;
+        }
         return new Info(flag,max,min);
     }
 }
