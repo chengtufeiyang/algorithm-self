@@ -11,7 +11,7 @@ public class P03_longest_palindromic_substring {
         System.out.println(dp(str));
     }
 
-//    最长回文子串（字串---连续，子序列---不连续）
+//    最长回文子串（字串---连续
     public static String recursion(String str){
         if (null == str || str.length()==0) return Constants.EMPTY_STR;
         return recursionDet(str,0,str.length()-1);
