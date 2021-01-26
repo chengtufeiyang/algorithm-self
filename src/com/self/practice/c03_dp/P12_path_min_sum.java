@@ -28,17 +28,8 @@ public class P12_path_min_sum {
         if (curr_a > a || curr_b > b) return Integer.MAX_VALUE;
         if (curr_a == a && curr_b == b) return arr[curr_a][curr_b];
 
-
-        int right = recursion(arr, curr_a, curr_b + 1, a, b);
-        int down = recursion(arr, curr_a + 1, curr_b, a, b);
-//        if (right != Integer.MAX_VALUE && curr_b + 1 <= b){
-//            right += arr[curr_a][curr_b + 1];
-//        }
-//
-//        if (down != Integer.MAX_VALUE){
-//            down += curr_a;
-//        }
-        return Math.min(right, down) + arr[curr_a][curr_b];
+        return Math.min(recursion(arr, curr_a, curr_b + 1, a, b),
+                recursion(arr, curr_a + 1, curr_b, a, b)) + arr[curr_a][curr_b];
     }
 
 
@@ -47,12 +38,13 @@ public class P12_path_min_sum {
         int row = arr.length;
         int col = arr[0].length;
         int[][] dp = new int[row][col];
-        for (int curr_a = col - 1; curr_a >= 0; curr_a--) {
-            for (int curr_b = row - 2; curr_b >= 0; curr_b--) {
-//                int right = dp[curr_a][curr_b + 1];
-//                int down = dp[curr_a + 1][curr_b];
-                dp[curr_a][curr_b] = Math.min(pick(dp,row,col,curr_a,curr_b + 1),
-                        pick(dp,row,col,curr_a + 1,curr_b)) + arr[curr_a][curr_b];
+        dp[row - 1][col - 1] = arr[row - 1][col - 1];
+        for (int curr_a = row - 1; curr_a >= 0; curr_a--) {
+            for (int curr_b = col - 1; curr_b >= 0; curr_b--) {
+                int min = Math.min(pick(dp, row, col, curr_a, curr_b + 1),
+                        pick(dp, row, col, curr_a + 1, curr_b));
+                dp[curr_a][curr_b] = (min == Integer.MAX_VALUE ? 0 : min)
+                        + arr[curr_a][curr_b];
             }
         }
         return dp[0][0];
@@ -78,7 +70,6 @@ public class P12_path_min_sum {
         }
         return result;
     }
-
 
 
     public static int minPathSum1(int[][] m) {
