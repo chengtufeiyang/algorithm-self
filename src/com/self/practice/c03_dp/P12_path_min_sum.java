@@ -13,6 +13,7 @@ public class P12_path_min_sum {
         int[][] m = generateRandomMatrix(rowSize, colSize);
         System.out.println(noral(m));
         System.out.println(dp(m));
+        System.out.println(dp2(m));
         System.out.println(minPathSum1(m));
 
     }
@@ -33,6 +34,11 @@ public class P12_path_min_sum {
     }
 
 
+    /**
+     * 普通二维数组
+     * @param arr
+     * @return
+     */
     public static int dp(int[][] arr) {
         if (null == arr || arr.length == 0) return -1;
         int row = arr.length;
@@ -54,6 +60,28 @@ public class P12_path_min_sum {
         if (curr_a < 0 || curr_b < 0 || curr_a >= row || curr_b >= col) return Integer.MAX_VALUE;
 
         return dp[curr_a][curr_b];
+    }
+
+    /**
+     * 优化为一维数组
+     * @param arr
+     * @return
+     */
+    public static int dp2(int[][] arr){
+        if (null == arr || arr.length == 0) return -1;
+        int row = arr.length - 1;
+        int col = arr[0].length;
+        int[] dp = new int[col + 1];
+//        dp[col-1] = arr[arr.length-1][col -1 ];
+        for (int i = 0; i <= col; i++) {  // 初始化
+            dp[i] = Integer.MAX_VALUE;
+        }
+
+        for (int i = col - 1; i  >= 0; i--) {
+            int temp = Math.min(dp[i],dp[i + 1]);
+            dp[i] = (temp == Integer.MAX_VALUE ? 0 : temp) + arr[row--][i];
+        }
+        return dp[0];
     }
 
 
