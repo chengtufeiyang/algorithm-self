@@ -31,4 +31,19 @@ public class ArraysSelf {
     }
 
 
+    /**
+     * 获取三维int数组指定位置数据
+     * @param arr
+     * @param row
+     * @param col
+     * @return
+     */
+    public static int query(int[][][]  arr,int row,int col,int z){
+        if (null == arr || arr.length==0 || row < 0 || row >= arr.length
+                || col <0 || col >= arr[0].length || z <0 || z >= arr[0][0].length )
+            return 0;
+        return arr[row][col][z];
+    }
+
+
 }
