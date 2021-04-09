@@ -1,6 +1,6 @@
 package com.self.allpractice;
 
-public class Problem003_side_1_lagestSquare {
+public class Problem002_side_1_lagestSquare {
 
     public static void main(String[] args) {
 //        int[][]  matrix = {
