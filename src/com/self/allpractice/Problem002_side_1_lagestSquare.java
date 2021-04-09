@@ -3,14 +3,22 @@ package com.self.allpractice;
 public class Problem002_side_1_lagestSquare {
 
     public static void main(String[] args) {
-        int[][]  matrix = {
-                {1,1,0,0},
-                {1,1,0,0},
-                {0,1,1,1},
-                {0,1,1,1},
-                {0,1,1,1}
-        };
+//        int[][]  matrix = {
+//                {1,1,0,0,1,1,1,1},
+//                {1,1,0,0,1,1,1,1},
+//                {0,1,1,1,1,1,1,1},
+//                {0,1,0,1,1,1,1,1},
+//                {0,1,1,1,0,0,0,0}
+//        };
 
+
+        int[][]  matrix = {
+                {1,1,1,1,1,1,1,1},
+                {1,1,0,0,1,1,1,1},
+                {1,1,1,1,1,1,1,1},
+                {1,1,0,1,1,1,1,1},
+                {1,1,1,1,1,1,1,1}
+        };
 
         System.out.println(lagestSquare(matrix));
     }
