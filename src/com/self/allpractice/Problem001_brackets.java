@@ -2,7 +2,7 @@ package com.self.allpractice;
 
 import edu.princeton.cs.algs4.In;
 
-public class problem001_brackets {
+public class Problem001_brackets {
 
     public static void main(String[] args) {
         String str = "(()(())))";
