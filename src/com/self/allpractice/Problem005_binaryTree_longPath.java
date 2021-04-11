@@ -68,7 +68,7 @@ public class Problem005_binaryTree_longPath {
     }
 
     /**
-     * 从任意位置向下获取最大值
+     * 从任意位置向下(任意)获取最大值
      * @param head
      * @return
      */
