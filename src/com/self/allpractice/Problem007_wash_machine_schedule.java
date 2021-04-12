@@ -12,6 +12,7 @@ public class Problem007_wash_machine_schedule {
 
 
     /**
+     * https://leetcode-cn.com/problems/super-washing-machines/submissions/
      * 求每个位置的瓶颈，因此需要求取所有位置的最大瓶颈，以此找到最终结果
      * <p>
      * <p>
