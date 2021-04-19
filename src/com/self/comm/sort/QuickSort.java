@@ -29,7 +29,7 @@ public class QuickSort {
 
     /**
      * 选取最右侧值进行比较
-     * @param arr
+     * @param arr 1
      */
     public static void quickSort2(int[] arr){
         if (null == arr || arr.length == 0 )return;
@@ -58,7 +58,7 @@ public class QuickSort {
 
     /**
      * 选取随机数进行比较
-     * @param arr
+     * @param arr 1
      */
     public static void quickSort3(int[] arr){
         if (null == arr || arr.length == 0 )return;
