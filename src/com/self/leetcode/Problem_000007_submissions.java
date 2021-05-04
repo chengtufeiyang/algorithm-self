@@ -1,8 +1,8 @@
 package com.self.leetcode;
 
-public class Problem000007_submissions {
+public class Problem_000007_submissions {
     public static void main(String[] args) {
-        Problem000007_submissions test = new Problem000007_submissions();
+        Problem_000007_submissions test = new Problem_000007_submissions();
         System.out.println(Integer.MAX_VALUE);
         int x = 1534236469;
         System.out.println(test.reverse(x));
