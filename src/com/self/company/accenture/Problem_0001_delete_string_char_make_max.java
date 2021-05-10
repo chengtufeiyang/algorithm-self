@@ -152,4 +152,18 @@ public class Problem_0001_delete_string_char_make_max {
 //    来源：力扣（LeetCode）
 //    著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
+
+
+
+
+//    定义f(i,j)为字符串s前i位删除j个数字后得到的最小数字字符串。
+//    则有f(i,j)=min(f(i-1,j)+s[i],f(i-1,j-1))
+//    递推，答案就是f(m,x)
+//    时间复杂度mx
+//
+//    作者：ccc
+//    链接：https://leetcode-cn.com/circle/discuss/l8Hse4/view/k3QXYZ/
+//    来源：力扣（LeetCode）
+//    著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
 }
